@@ -7,7 +7,13 @@
 	},
 	"pages": [
 		{
-			"path": "pages/index/index",
+			"path": "pages/load/load",
+			"style": {
+				"navigationBarTitleText": "uni-app"
+			}
+		},
+		{
+			"path": "pages/home/home",
 			"style": {
 				"navigationBarTitleText": "uni-app"
 			}

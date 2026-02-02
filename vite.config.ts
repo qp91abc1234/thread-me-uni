@@ -28,7 +28,8 @@ export default defineConfig((env: ConfigEnv) => {
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: `@import '@/common/scss/mixin.scss';`
+          silenceDeprecations: ['legacy-js-api'],
+          additionalData: `@use '@/common/scss/mixin.scss' as *;`
         }
       }
     },
