@@ -76,7 +76,7 @@
     "globals": "^17.3.0",
     "postcss-html": "^1.8.1",
     "rollup-plugin-visualizer": "^6.0.5",
-    "sass": "^1.97.3",
+    "sass": "1.78.0",
     "stylelint": "^17.1.0",
     "stylelint-config-recess-order": "^7.6.0",
     "stylelint-config-recommended-vue": "^1.6.1",
