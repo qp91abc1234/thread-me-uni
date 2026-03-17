@@ -37,6 +37,10 @@ export default defineConfig(() => {
       alias: {
         '@': join(__dirname, './src')
       }
+    },
+    server: {
+      open: true,
+      port: 5173
     }
   }
 })

@@ -1,6 +1,20 @@
 export const setupLogger = () => {
-  setupNavigationLogger()
   setupConsoleLogger()
+  setupNavigationLogger()
+}
+
+const setupConsoleLogger = () => {
+  const realtimeLogger = uni.getRealtimeLogManager ? uni.getRealtimeLogManager() : null
+  const methods = ['log', 'info', 'warn', 'error']
+  methods.forEach((method) => {
+    const original = console[method]
+    console[method] = function (...args) {
+      original.apply(console, args)
+      if (method !== 'log' && realtimeLogger) {
+        realtimeLogger[method](args)
+      }
+    }
+  })
 }
 
 const setupNavigationLogger = () => {
@@ -15,21 +29,11 @@ const setupNavigationLogger = () => {
       console.trace()
       console.groupEnd()
 
-      return original.call(this, options)
-    }
-  })
-}
+      const currentPages = getCurrentPages()
+      const currentPage = currentPages[currentPages.length - 1]
+      console.info(`🚀 [uni.${method}] from: ${currentPage.route}, to: ${options?.url}`)
 
-const setupConsoleLogger = () => {
-  const realtimeLogger = uni.getRealtimeLogManager()
-  const methods = ['log', 'info', 'warn', 'error']
-  methods.forEach((method) => {
-    const original = console[method]
-    console[method] = function (...args) {
-      original.apply(console, args)
-      if (method !== 'log' && realtimeLogger) {
-        realtimeLogger[method](args)
-      }
+      return original.call(this, options)
     }
   })
 }
