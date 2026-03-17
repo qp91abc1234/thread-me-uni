@@ -33,6 +33,15 @@ export default defineConfig(() => {
         }
       }
     },
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            vendor: ['vue', 'pinia', 'vue-router', '@dcloudio/uni-h5']
+          }
+        }
+      }
+    },
     resolve: {
       alias: {
         '@': join(__dirname, './src')
