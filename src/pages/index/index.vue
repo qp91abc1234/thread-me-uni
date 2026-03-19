@@ -1,14 +1,15 @@
 <template>
-  <view class="content">
+  <Page :tabbar-index="0">
     <image class="logo" src="/static/logo.png" />
     <view class="text-area">
       <text class="title">{{ title }}</text>
     </view>
-  </view>
+  </Page>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import Page from '@/modules/page/page.vue'
 const title = ref('Hello')
 </script>
 
